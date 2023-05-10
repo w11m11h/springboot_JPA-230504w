@@ -1,7 +1,6 @@
 package com.moohee.jpa;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -52,25 +51,49 @@ public class JpaTest {
 //		}
 //	}
 	
+//	@Test
+//	@DisplayName("회원 정보 수정 테스트")
+//	public void modifyMember() {
+//		
+//		Optional<MemberDto> optionalDto = memberRepository.findById(10L);
+//		
+//		if(optionalDto.isPresent()) { //null 값 여부 체크
+//		
+//			MemberDto memberDto = optionalDto.get();
+//			
+//			memberDto.setAge(32); //나이수정
+//			memberDto.setName("이순신"); //이름수정
+//			
+//			memberRepository.save(memberDto);
+//		}
+//		
+//		optionalDto = memberRepository.findById(3L);
+//		
+//		System.out.println(optionalDto.get().toString());
+//		
+//	}
+	
+//	@Test
+//	@DisplayName("회원 이름 중 성씨로 찾기")
+//	public void searchFirst() {
+//		
+//		List<MemberDto> memberDtos = memberRepository.findByNameStartingWith("강");
+//		
+//		for(MemberDto memberDto : memberDtos) {
+//			System.out.println(memberDto.toString());
+//		}
+//		
+//	}
+	
 	@Test
-	@DisplayName("회원 정보 수정 테스트")
-	public void modifyMember() {
+	@DisplayName("회원 이름 중 특정단어 포함된 회원 찾기")
+	public void searchFirst2() {
 		
-		Optional<MemberDto> optionalDto = memberRepository.findById(10L);
+		List<MemberDto> memberDtos = memberRepository.findByNameLike("%가%");
 		
-		if(optionalDto.isPresent()) { //null 값 여부 체크
-		
-			MemberDto memberDto = optionalDto.get();
-			
-			memberDto.setAge(32); //나이수정
-			memberDto.setName("이순신"); //이름수정
-			
-			memberRepository.save(memberDto);
+		for(MemberDto memberDto : memberDtos) {
+			System.out.println(memberDto.toString());
 		}
-		
-		optionalDto = memberRepository.findById(3L);
-		
-		System.out.println(optionalDto.get().toString());
 		
 	}
 
